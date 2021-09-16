@@ -3,10 +3,6 @@ import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 import csv from "csv-parser";
 
-const creatorAddress = "SOL1234567890ABCDEFGHIGHKLMNOPQSTUVWXYZ";
-const assetsPath = "../assets";
-const dataFilePath = "data.csv";
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const results = [];
@@ -16,19 +12,24 @@ type Attribute = {
   value: string;
 };
 
-const getNftName = (name: string) => `SOLDIER #${name}`;
+
+const assetsPath = "../assets";
+const dataFilePath = "data.csv";
+const creatorAddress = "SOL1234567890ABCDEFGHIGHKLMNOPQSTUVWXYZ";
+
+const getNftName = (name: string) => `ART #${name}`;
 const getMetadata = (name: string, attributes: Attribute[]) => ({
   name: getNftName(name),
   symbol: "",
-  description: "You hold in your possession an soldier.",
+  description: "You hold in your possession an awesome art.",
   seller_fee_basis_points: 500,
   // "image.png" will be replaced with actual URL by metaplex cli
   image: "image.png",
-  external_url: "https://soldiers.webflow.io/",
+  external_url: "https://solflare.com",
   animation_url: "",
   collection: {
-    name: "SOLdier",
-    family: "SOLarmy",
+    name: "Solflare X NFT",
+    family: "Solflare",
   },
   properties: {
     files: [
