@@ -63,8 +63,8 @@ const getAttributes = (props) => {
 };
 
 const iterateOverItems = async () => {
-  try {
-    for (const row of results) {
+  for (const row of results) {
+    try {
       // get separately name and props
       const { Name: name, ...props } = row;
       //   console.log("name", name);
@@ -73,15 +73,16 @@ const iterateOverItems = async () => {
 
       const metadata = getMetadata(name, attributes);
       const metadataString = JSON.stringify(metadata);
-      console.log("metadata", metadata);
 
       const fileName = `${nameByNumber}.json`;
       const filePath = path.resolve(__dirname, assetsPath, fileName);
       fs.writeFileSync(filePath, metadataString);
+
+      console.log(`metadata for ${nameByNumber} done!`);
+    } catch (e) {
+      // Catch anything bad that happens
+      console.error("We've thrown! Whoops!", e);
     }
-  } catch (e) {
-    // Catch anything bad that happens
-    console.error("We've thrown! Whoops!", e);
   }
 };
 
